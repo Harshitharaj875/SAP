@@ -1,0 +1,18 @@
+DATABASE VIEWS
+*&---------------------------------------------------------------------*
+*& Report ZHAR_VIEW
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHARDB_VIEWS.
+DATA : it_plant TYPE STANDARD TABLE OF ZHARDB_VIEWS,
+       wa_plant  LIKE  LINE OF it_plant.
+
+SELECT-OPTIONS s_matnr FOR wa_plant-matnr.
+
+SELECT * FROM ZHARDB_VIEWS INTO TABLE it_plant WHERE matnr IN s_matnr.
+
+
+ LOOP AT it_plant INTO wa_plant.
+   WRITE : / wa_plant-matnr, 40 wa_plant-werks, 120 wa_plant-name1.
+  ENDLOOP.
