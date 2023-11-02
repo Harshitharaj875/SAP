@@ -1,0 +1,15 @@
+*&---------------------------------------------------------------------*
+*& Report ZHAR_PROCEDURE_CALL
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT ZHAR_PROCEDURE_CALL.
+
+DATA v_date type sy-datum.
+v_date = sy-datum.
+write v_date.
+AT LINE-SELECTION.
+  EXPORT v_date TO MEMORY ID 'HAR'.
+  SEt PARAMETER ID 'HAR' FIELD v_date.
+SUBMIT ZHAR_PROCEDURE AND RETURN.
+WRITE 'end'.
